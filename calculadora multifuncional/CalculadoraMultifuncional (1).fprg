@@ -1,64 +1,95 @@
-<?xml version="1.0"?>
-<flowgorithm fileversion="4.2">
-    <attributes>
-        <attribute name="name" value="Calculadora Multifuncional"/>
-        <attribute name="authors" value="Roberto"/>
-        <attribute name="about" value="Trabalho de Tecnologia da Informacao - Calculadora Multifuncional com menu de 11 opcoes"/>
-        <attribute name="saved" value="2026-08-25 06:05:16 "/>
-        <attribute name="created" value=""/>
-        <attribute name="edited" value=""/>
-        <attribute name="edited" value="VXNlcjtERVNLVE9QLTBMQUg4SjY7MjAyNi0wOC0yNTsiMDY6MDU6MTYgIjs0OzI3NTI="/>
-    </attributes>
-    <function name="Main" type="None" variable="">
-        <parameters/>
-        <body>
-            <declare name="opcao" type="Integer" array="False" size=""/>
-            <declare name="n1, n2, n3, resultado" type="Real" array="False" size=""/>
-            <declare name="base, expoente" type="Real" array="False" size=""/>
-            <declare name="raio" type="Real" array="False" size=""/>
-            <declare name="baseRet, alturaRet" type="Real" array="False" size=""/>
-            <declare name="celsius" type="Real" array="False" size=""/>
-            <assign variable="opcao" expression="0"/>
-            <while expression="opcao&lt;&gt;11">
-                <output expression="&quot;        CALCULADORA MULTIFUNCIONAL&quot;" newline="True"/>
-                <output expression="&quot;1  - Soma&quot;" newline="True"/>
-                <output expression="&quot;2  - Subtra&#231;&#227;o&quot;" newline="True"/>
-                <output expression="&quot;3  - Multiplica&#231;&#227;o&quot;" newline="True"/>
-                <output expression="&quot;4  - Divis&#227;o&quot;" newline="True"/>
-                <output expression="&quot;5  - Potencia&#231;&#227;o&quot;" newline="True"/>
-                <output expression="&quot;6  - Raiz Quadrada&quot;" newline="True"/>
-                <output expression="&quot;7  - &#193;rea do C&#237;rculo&quot;" newline="True"/>
-                <output expression="&quot;8  - &#193;rea do Ret&#226;ngulo&quot;" newline="True"/>
-                <output expression="&quot;9  - Convers&#227;o de Celsius para Fahrenheit&quot;" newline="True"/>
-                <output expression="&quot;10 - M&#233;dia Aritm&#233;tica&quot;" newline="True"/>
-                <output expression="&quot;11 - Encerrar o Programa&quot;" newline="True"/>
-                <output expression="&quot;Escolha uma op&#231;&#227;o (1 a 11): &quot;" newline="True"/>
-                <input variable="opcao"/>
-                <if expression="opcao=1">
-                    <then>
-                        <output expression="&quot;--- Op&#231;&#227;o 1: Soma ---&quot;" newline="True"/>
-                        <output expression="&quot;Digite o primeiro n&#250;mero:&quot;" newline="True"/>
-                        <input variable="n1"/>
-                        <output expression="&quot;Digite o segundo n&#250;mero:&quot;" newline="True"/>
-                        <input variable="n2"/>
-                        <assign variable="resultado" expression="n1+n2"/>
-                        <output expression="&quot;Resultado: &quot; &amp; n1 &amp; &quot; + &quot; &amp; n2 &amp; &quot; = &quot; &amp; resultado" newline="True"/>
-                    </then>
-                    <else>
-                        <if expression="opcao=2">
-                            <then>
-                                <output expression="&quot;Op&#231;&#227;o 2: Subtra&#231;&#227;o&quot;" newline="True"/>
-                                <output expression="&quot;Digite o primeiro n&#250;mero:&quot;" newline="True"/>
-                                <input variable="n1"/>
-                                <output expression="&quot;Digite o segundo n&#250;mero:&quot;" newline="True"/>
-                                <input variable="n2"/>
-                                <assign variable="resultado" expression="n1-n2"/>
-                                <output expression="&quot;Resultado: &quot; &amp; n1 &amp; &quot; - &quot; &amp; n2 &amp; &quot; = &quot; &amp; resultado" newline="True"/>
-                            </then>
-                            <else>
-                                <if expression="opcao=3">
-                                    <then>
-                                        <output expression="&quot;Op&#231;&#227;o 3: Multiplica&#231;&#227;o&quot;" newline="True"/>
+# 🧮 Calculadora Multifuncional em C
+
+> Programa de terminal em **linguagem C** com menu de **20 operações**: matemática básica, geometria, equações e conversões.
+
+![Linguagem](https://img.shields.io/badge/linguagem-C-blue)
+![Status](https://img.shields.io/badge/status-concluído-brightgreen)
+![Licença](https://img.shields.io/badge/licença-MIT-blue)
+
+## 📌 Visão geral e contexto
+
+Projeto acadêmico desenvolvido na disciplina **Algoritmos e Pensamento Computacional**, do curso de **Engenharia de Software** (2º semestre de 2026).
+
+O objetivo foi aplicar os fundamentos da lógica de programação (variáveis, funções, estruturas de decisão e de repetição) construindo uma ferramenta útil: uma calculadora que reúne vários tipos de cálculo em um único programa, sem que o usuário precise reiniciá-lo a cada operação.
+
+O programa também **trata entradas inválidas**: se o usuário digitar uma letra no lugar de um número, ele pede o valor de novo em vez de travar.
+
+## ⚙️ Funcionalidades
+
+| Nº | Operação | Nº | Operação |
+|---|---|---|---|
+| 1 | Soma | 11 | Tabuada |
+| 2 | Subtração | 12 | Média aritmética |
+| 3 | Multiplicação | 13 | Maior e menor valor |
+| 4 | Divisão (com verificação de divisão por zero) | 14 | Área de figuras (quadrado, retângulo, triângulo, círculo, trapézio, losango) |
+| 5 | Resto da divisão | 15 | Perímetro (quadrado, retângulo, triângulo, circunferência) |
+| 6 | Porcentagem (com acréscimo e desconto) | 16 | Volume de sólidos (cubo, paralelepípedo, esfera, cilindro, cone, pirâmide) |
+| 7 | Potenciação | 17 | Teorema de Pitágoras |
+| 8 | Raiz quadrada (com verificação de número negativo) | 18 | Equação do 2º grau (Bhaskara) |
+| 9 | Fatorial (de 0 a 20) | 19 | Distância entre dois pontos |
+| 10 | Verificação de número primo | 20 | Conversão entre graus e radianos |
+
+A opção **0** encerra o programa.
+
+## 🛠️ Tecnologias utilizadas
+
+- **Linguagem C**
+- Bibliotecas padrão: `stdio.h`, `stdlib.h` e `math.h`
+- Compilador **GCC**
+
+## ▶️ Como executar
+
+### Opção 1: no navegador (sem instalar nada)
+
+1. Acesse [onlinegdb.com](https://www.onlinegdb.com/online_c_compiler).
+2. Apague o código de exemplo e cole o conteúdo do arquivo `calculadora.c`.
+3. Clique em **Run**.
+
+### Opção 2: no computador
+
+Pré-requisito: ter o compilador [GCC](https://gcc.gnu.org/) instalado.
+
+```bash
+# 1. Clone o repositório (ou use Code → Download ZIP)
+git clone [link do botão Code]
+
+# 2. Compile o programa
+gcc calculadora.c -o calculadora -lm
+
+# 3. Execute
+./calculadora
+```
+
+## 🖼️ Demonstração
+
+![Menu principal](./docs/execucao-menu.png)
+
+![Exemplo de cálculo](./docs/execucao-calculo.png)
+
+## 🧱 Estruturas utilizadas
+
+| Estrutura | Onde é usada |
+|---|---|
+| Funções | Cada operação tem sua própria função (`soma`, `fatorial`, `bhaskara`, `areas` etc.) |
+| Repetição (`do...while`) | Mantém o menu rodando até o usuário escolher 0 |
+| Repetição (`for`) | Fatorial, tabuada, verificação de primo, média e maior/menor |
+| Decisão (`switch` e `if/else`) | Escolha da operação no menu e tratamento de casos especiais |
+| Vetor de strings | Nomes das 20 opções exibidas no menu em duas colunas |
+| Validação de entrada | Função `le()` repete a pergunta se o valor digitado não for número |
+
+## 📁 Estrutura do repositório
+
+```
+├── calculadora.c   # código-fonte
+├── docs/           # prints da execução
+├── LICENSE
+├── .gitignore
+└── README.md
+```
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.3: Multiplica&#231;&#227;o&quot;" newline="True"/>
                                         <output expression="&quot;Digite o primeiro n&#250;mero:&quot;" newline="True"/>
                                         <input variable="n1"/>
                                         <output expression="&quot;Digite o segundo n&#250;mero:&quot;" newline="True"/>
